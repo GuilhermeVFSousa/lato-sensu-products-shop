@@ -5,7 +5,7 @@ import { ProductsPage } from "../pages/ProductsPage/ProductsPage";
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <App />,
+    element: <ProductsPage />,
   },
     {
     path: "/products",
