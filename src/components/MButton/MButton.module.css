@@ -1,0 +1,121 @@
+.grey {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+    border: 0.1rem solid rgba(255, 255, 255, 0.15);
+}
+
+.grey:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.red {
+    background: linear-gradient(135deg, rgba(188, 37, 37, 0.8), rgba(156, 29, 29, 0.9));
+    color: rgba(255, 255, 255, 0.95);
+    border: 0.1rem solid rgba(188, 37, 37, 0.4);
+}
+
+.red:hover {
+    background: linear-gradient(135deg, rgba(188, 37, 37, 0.9), rgba(156, 29, 29, 1));
+    border-color: rgba(188, 37, 37, 0.6);
+}
+
+.blue {
+    background: rgba(72, 240, 255, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+    border: 0.1rem solid rgba(72, 240, 255, 0.15);
+}
+
+.blue:hover {
+    background: rgba(72, 240, 255, 0.18);
+    border-color: rgba(72, 240, 255, 0.25);
+}
+
+.purple {
+    background: rgba(147, 72, 255, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+    border: 0.1rem solid rgba(147, 72, 255, 0.15);
+}
+
+.purple:hover {
+    background: rgba(147, 72, 255, 0.18);
+    border-color: rgba(147, 72, 255, 0.25);
+}
+
+.yellow {
+    background: rgba(255, 206, 72, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+    border: 0.1rem solid rgba(255, 206, 72, 0.15);
+}
+
+.yellow:hover {
+    background: rgba(255, 206, 72, 0.18);
+    border-color: rgba(255, 206, 72, 0.25);
+}
+
+.orange {
+    background: rgba(255, 142, 72, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+    border: 0.1rem solid rgba(255, 142, 72, 0.15);
+}
+
+.orange:hover {
+    background: rgba(255, 142, 72, 0.18);
+    border-color: rgba(255, 142, 72, 0.25);
+}
+
+.pink {
+    background: rgba(255, 72, 154, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+    border: 0.1rem solid rgba(255, 72, 154, 0.15);
+}
+
+.pink:hover {
+    background: rgba(255, 72, 154, 0.18);
+    border-color: rgba(255, 72, 154, 0.25);
+}
+
+.mbutton {
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    border-radius: 1.2rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.mbutton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.mbutton:hover::before {
+    left: 100%;
+}
+
+.mbutton:hover {
+    cursor: pointer;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 2px 0 rgba(255, 255, 255, 0.08);
+}
+
+.mbutton:active {
+    transform: translateY(0) scale(0.98);
+    transition: all 0.1s;
+}

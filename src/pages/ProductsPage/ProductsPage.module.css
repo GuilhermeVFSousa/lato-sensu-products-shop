@@ -1,0 +1,28 @@
+.products_container {
+    padding: 2rem;
+}
+
+.products_search {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.products_search input {
+    flex: 4;
+}
+
+.products_search button {
+    flex: 1;
+    max-width: 10rem;
+    min-width: 10rem;
+}
+
+.products_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: start;
+}
