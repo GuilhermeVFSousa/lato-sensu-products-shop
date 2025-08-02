@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Input.module.css';
-import clsx from 'clsx';
 
 type InputType = 'text' | 'email' | 'number' | 'password' | 'textarea';
 
@@ -9,6 +8,7 @@ type Props = {
   placeholder?: string;
   type?: InputType;
   value?: string;
+  step?:string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onEnterPress?: () => void;
   name?: string;
@@ -21,6 +21,7 @@ export const Input: React.FC<Props> = ({
   placeholder,
   type = 'text',
   value,
+  step,
   onChange,
   onEnterPress,
   name,
@@ -50,6 +51,7 @@ export const Input: React.FC<Props> = ({
         <input
           type={type}
           name={name}
+          step={step}
           className={styles.input}
           placeholder={placeholder}
           value={value}

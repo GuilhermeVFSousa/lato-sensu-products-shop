@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './MButton.module.css';
 import clsx from 'clsx';
 
-type MButtonVariant = 'grey' | 'red' | 'purple' | 'yellow' | 'orange' | 'pink' | 'blue';
+type MButtonVariant = 'grey' | 'red' | 'purple' | 'yellow' | 'orange' | 'pink' | 'blue' | 'pinkellow';
 
 type MButtonProps = {
   children: React.ReactNode;

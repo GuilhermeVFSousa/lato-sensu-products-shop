@@ -20,6 +20,17 @@
     border-color: rgba(188, 37, 37, 0.6);
 }
 
+.pinkellow {
+    background: linear-gradient(135deg, rgba(188, 183, 37, 0.8), rgba(156, 29, 137, 0.9));
+    color: rgba(255, 255, 255, 0.95);
+    border: 0.1rem solid rgba(188, 37, 37, 0.4);
+}
+
+.pinkellow:hover {
+    background: linear-gradient(135deg, rgba(188, 183, 37, 0.9), rgba(156, 29, 137, 1));
+    border-color: rgba(188, 37, 37, 0.6);
+}
+
 .blue {
     background: rgba(72, 240, 255, 0.12);
     color: rgba(255, 255, 255, 0.9);

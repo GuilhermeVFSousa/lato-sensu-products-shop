@@ -5,31 +5,35 @@ import style from './ProductsPage.module.css'
 import { Input } from '../../components/Input/Input';
 import { MButton } from '../../components/MButton/MButton';
 import { ProductService } from '../../features/products/service/ProductService';
+import { useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export const ProductsPage: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    ProductService.getProducts()
-      .then(p => {
-        setProducts(p);
-        setFilteredProducts(p)
-      }).catch(console.error);
-  }, []);
-
+  const data = useLoaderData() as Product[];
+  
+  const [products] = useState<Product[]>(data); // não precisa atualizar
   const [searchCode, setSearchCode] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>(data);
 
-    const handleFilter = () => {
+  const handleFilter = () => {
     if (searchCode.trim() === '') {
       setFilteredProducts(products);
     } else {
       setFilteredProducts(products.filter(p => p.id.toString() === searchCode.toString()));
     }
   };
+
   return (
     <div className={style.products_container}>
+      <div className={style.add_product}>
+        <Link to={'/product/add'}>
+          <MButton 
+            theme='pinkellow' 
+            onClick={handleFilter}
+          >+ Adicionar</MButton>
+        </Link>
+      </div>
       <div className={style.products_search}>
         <Input 
           placeholder='Código' 
