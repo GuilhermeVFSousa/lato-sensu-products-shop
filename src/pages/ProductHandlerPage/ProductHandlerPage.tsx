@@ -3,6 +3,7 @@ import style from './ProductHandlerPage.module.css'
 import { Input } from "../../components/Input/Input";
 import { MButton } from "../../components/MButton/MButton";
 import { Form, useActionData, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const ProductHandlerPage: React.FC = () => {
     const actionData = useActionData();
@@ -52,11 +53,13 @@ export const ProductHandlerPage: React.FC = () => {
                     >
                         Adicionar
                     </MButton>
-                    <MButton
-                        theme='grey'
-                    >
-                        Cancelar
-                    </MButton>
+                    <Link to={'/products'}>
+                        <MButton
+                            theme='grey'
+                        >
+                            Cancelar
+                        </MButton>
+                    </Link>
                 </div>
             </Form>
 
