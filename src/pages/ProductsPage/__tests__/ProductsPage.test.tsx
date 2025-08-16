@@ -4,6 +4,8 @@ import { Product } from '../../../features/products/models/product';
 import { ProductsPage } from '../ProductsPage';
 import { act } from 'react';
 
+jest.mock('axios');
+
 jest.mock('../../../features/products/components/ProductCard/ProductCard', () => ({
   ProductCard: ({ product }: { product: Product }) => (
     <div data-testid={`product-${product.id}`}>
@@ -71,13 +73,15 @@ describe('ProductsPage', () => {
 
     const searchInput = screen.getByTestId('search-input');
     fireEvent.change(searchInput, { target: { value: '1' } });
-  
-    jest.advanceTimersByTime(500);
+
+    await act(async () => {
+      jest.advanceTimersByTime(500);
+    });
 
     await waitFor(() => {
-        expect(screen.getByTestId('product-1')).toBeInTheDocument();
-        expect(screen.queryByTestId('product-2')).not.toBeInTheDocument();
-        expect(screen.queryByTestId('product-3')).not.toBeInTheDocument();
+      expect(screen.getByTestId('product-1')).toBeInTheDocument();
+      expect(screen.queryByTestId('product-2')).not.toBeInTheDocument();
+      expect(screen.queryByTestId('product-3')).not.toBeInTheDocument();
     })
 
     jest.useRealTimers();
