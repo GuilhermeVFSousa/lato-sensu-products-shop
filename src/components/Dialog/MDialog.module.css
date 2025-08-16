@@ -1,0 +1,334 @@
+/* MDialog.module.css - Glassmorphism Theme */
+
+.mdialog {
+  /* Reset padrão */
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  
+  /* Posicionamento */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  
+  /* Glassmorphism Effect */
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  
+  /* Bordas e sombras */
+  border: 0.1rem solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.6rem;
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.05);
+  
+  /* Transições */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Overflow */
+  overflow: hidden;
+  
+  /* Animação de entrada */
+  animation: dialogSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Backdrop */
+.mdialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: backdropFadeIn 0.3s ease-out forwards;
+}
+
+/* Efeito de brilho superior */
+.mdialog::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  z-index: 1;
+}
+
+/* Textura sutil */
+.mdialog::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, 
+    rgba(120, 119, 198, 0.03) 0%, 
+    transparent 50%),
+  radial-gradient(circle at 80% 20%, 
+    rgba(255, 119, 198, 0.02) 0%, 
+    transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content wrapper */
+.dialogContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header */
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.4rem 2.4rem 0 2.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.dialogTitle {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+.closeButton {
+  background: rgba(255, 255, 255, 0.08);
+  border: 0.1rem solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+}
+
+.closeButton:active {
+  transform: scale(0.95);
+}
+
+/* Body */
+.dialogBody {
+  flex: 1;
+  padding: 0 2.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+.dialogBody p {
+  margin: 0 0 1.6rem 0;
+}
+
+.dialogBody p:last-child {
+  margin-bottom: 0;
+}
+
+/* Actions */
+.dialogActions {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: flex-end;
+  padding: 2.4rem 2.4rem 2.4rem 2.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 2rem;
+}
+
+/* Variações de tamanho */
+.small {
+  width: min(32rem, 90vw);
+  min-height: 16rem;
+}
+
+.medium {
+  width: min(48rem, 90vw);
+  min-height: 20rem;
+}
+
+.large {
+  width: min(64rem, 90vw);
+  min-height: 28rem;
+}
+
+/* Variações de tema/variante */
+.default {
+  /* Já definido no .mdialog */
+}
+
+.success {
+  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(34, 197, 94, 0.1),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.05);
+}
+
+.success::after {
+  background: radial-gradient(circle at 20% 50%, 
+    rgba(34, 197, 94, 0.05) 0%, 
+    transparent 50%);
+}
+
+.warning {
+  border-color: rgba(251, 191, 36, 0.3);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(251, 191, 36, 0.1),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.05);
+}
+
+.warning::after {
+  background: radial-gradient(circle at 20% 50%, 
+    rgba(251, 191, 36, 0.05) 0%, 
+    transparent 50%);
+}
+
+.error {
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(239, 68, 68, 0.1),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.05);
+}
+
+.error::after {
+  background: radial-gradient(circle at 20% 50%, 
+    rgba(239, 68, 68, 0.05) 0%, 
+    transparent 50%);
+}
+
+.info {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(59, 130, 246, 0.1),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.05);
+}
+
+.info::after {
+  background: radial-gradient(circle at 20% 50%, 
+    rgba(59, 130, 246, 0.05) 0%, 
+    transparent 50%);
+}
+
+/* Modificadores */
+.withActions .dialogBody {
+  padding-bottom: 0;
+}
+
+.withTitle .dialogBody {
+  padding-top: 0;
+}
+
+/* Estados hover do dialog */
+.mdialog:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 32px 64px rgba(0, 0, 0, 0.5),
+    0 16px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Animações */
+@keyframes dialogSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .small,
+  .medium,
+  .large {
+    width: 95vw;
+    min-width: 28rem;
+    max-height: 85vh;
+  }
+  
+  .dialogHeader {
+    padding: 2rem 2rem 0 2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .dialogTitle {
+    font-size: 1.8rem;
+  }
+  
+  .dialogBody {
+    padding: 0 2rem;
+    font-size: 1.5rem;
+  }
+  
+  .dialogActions {
+    padding: 2rem;
+    flex-direction: column;
+  }
+  
+  .closeButton {
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.8rem;
+  }
+}
+
+/* Modo de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .mdialog,
+  .mdialog::backdrop,
+  .closeButton {
+    animation: none;
+    transition: none;
+  }
+  
+  .mdialog {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

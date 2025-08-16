@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import style from './MainPage.module.css';
-import { Outlet } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router';
+import { Link } from 'react-router';
 
 interface NavItem {
     id: string;

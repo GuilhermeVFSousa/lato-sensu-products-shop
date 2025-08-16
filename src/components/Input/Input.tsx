@@ -15,6 +15,7 @@ type Props = {
   className?: string;
   required?: boolean;
   disabled?: boolean;
+  style?: React.CSSProperties;
 };
 
 export const Input: React.FC<Props> = ({
@@ -26,7 +27,8 @@ export const Input: React.FC<Props> = ({
   onEnterPress,
   name,
   required = false,
-  disabled = false
+  disabled = false,
+  style = {}
 }) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && onEnterPress) {
@@ -46,6 +48,7 @@ export const Input: React.FC<Props> = ({
           onKeyDown={handleKeyDown}
           required={required}
           disabled={disabled}
+          style={style}
         />
       ) : (
         <input
@@ -59,6 +62,7 @@ export const Input: React.FC<Props> = ({
           onKeyDown={handleKeyDown}
           required={required}
           disabled={disabled}
+          style={style}
         />
       )}
     </>

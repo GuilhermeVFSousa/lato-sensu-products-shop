@@ -5,9 +5,11 @@ import { MButton } from "../../../../components/MButton/MButton";
 
 type Props = {
   product: Product;
+  onEdit?: () => void;
+  onDelete?: () => void;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, onEdit, onDelete }) => {
 
   return (
     <div className={styles.product__card}>
@@ -16,11 +18,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <div className={styles.product__card__content__info}>
           <h1>({product.id}) {product.name}</h1>
           <h4>{product.category}</h4>
-          <h4>R$ {product.price.toFixed(2)}</h4>
+          <h4>R$ {product.price}</h4>
         </div>
         <div className={styles.product__card__content__actions}>
-          <MButton theme="grey">Editar</MButton>
-          <MButton theme="red">Excluir</MButton>
+          <MButton theme="grey" onClick={onEdit}>Editar</MButton>
+          <MButton theme="red" onClick={onDelete}>Excluir</MButton>
         </div>
       </div>
   </div>
