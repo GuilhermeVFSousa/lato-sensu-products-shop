@@ -4,7 +4,6 @@ import { ProductCard } from '../../features/products/components/ProductCard/Prod
 import style from './ProductsPage.module.css'
 import { Input } from '../../components/Input/Input';
 import { MButton } from '../../components/MButton/MButton';
-import { ProductService } from '../../features/products/service/ProductService';
 import { useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -20,9 +19,15 @@ export const ProductsPage: React.FC = () => {
     if (searchCode.trim() === '') {
       setFilteredProducts(products);
     } else {
-      setFilteredProducts(products.filter(p => p.id.toString() === searchCode.toString()));
+      setFilteredProducts(products.filter(p => p.id.toString().includes(searchCode.toString())));
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      handleFilter();
+    }, 500);
+  }, [searchCode])
 
   return (
     <div className={style.products_container}>
