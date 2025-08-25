@@ -54,7 +54,6 @@ export const ProductHandlerPage: React.FC = () => {
         <div className={style.container}>
             {actionData?.error ? (<span className={style.errorMessage}>{actionData.error}</span>) : null}
             
-            {/* Tabs */}
             <div className={style.tabs}>
                 <button 
                     className={`${style.tab} ${activeTab === 'individual' ? style.activeTab : ''}`}
@@ -63,16 +62,18 @@ export const ProductHandlerPage: React.FC = () => {
                 >
                     Cadastro Individual
                 </button>
-                <button 
+                {product ? null : (
+                                    <button 
                     className={`${style.tab} ${activeTab === 'bulk' ? style.activeTab : ''}`}
                     onClick={() => setActiveTab('bulk')}
                     type="button"
                 >
                     Cadastro em Massa
                 </button>
+                )}
+
             </div>
 
-            {/* Individual Form */}
             {activeTab === 'individual' && (
                 <Form method="post">
                     {product ? <Input
@@ -137,7 +138,6 @@ export const ProductHandlerPage: React.FC = () => {
                 </Form>
             )}
 
-            {/* Bulk Upload Form */}
             {activeTab === 'bulk' && (
                 <div className={style.bulkContainer}>
                     <div className={style.fileInputContainer}>
