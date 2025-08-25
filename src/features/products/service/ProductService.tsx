@@ -46,5 +46,50 @@ export const ProductService = {
     if(!id) throw new Error('ID é obrigatório') ;
     
     await axios.delete<Product>(`${API_URL}/${id}`);
+  },
+
+  async uploadFromCSV(file: File): Promise<{ success: number; errors: string[] }> {
+    if (!file?.name.toLowerCase().endsWith('.csv')) {
+      throw new Error('Arquivo deve ser CSV');
+    }
+
+    const Papa = await import('papaparse');
+    
+    return new Promise((resolve, reject) => {
+      Papa.parse(file, {
+        header: true,
+        skipEmptyLines: true,
+        complete: async (results) => {
+          const errors: string[] = [];
+          let success = 0;
+
+          for (let i = 0; i < results.data.length; i++) {
+            try {
+              const row = results.data[i] as any;
+              const product = {
+                name: row.name?.trim(),
+                description: row.description?.trim(),
+                price: parseFloat(row.price?.toString().replace(',', '.')),
+                category: row.category?.trim(),
+                pictureUrl: row.pictureUrl?.trim()
+              };
+
+              if (!product.name || !product.description || !product.category || 
+                  !product.pictureUrl || !product.price) {
+                throw new Error('Campos obrigatórios em branco');
+              }
+
+              await this.addProduct(product);
+              success++;
+            } catch (error: Error | any) {
+              errors.push(`Linha ${i + 2}: ${error?.message}`);
+            }
+          }
+
+          resolve({ success, errors });
+        },
+        error: (error) => reject(new Error(`Erro no CSV: ${error.message}`))
+      });
+    });
   }
 };
