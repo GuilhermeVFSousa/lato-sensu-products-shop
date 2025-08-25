@@ -79,20 +79,6 @@ export const MainPage: React.FC = () => {
                 { id: 'home', icon: '🏠', text: 'Início', route: '/home' },
                 { id: 'products', icon: '🛍️', text: 'Produtos', route: '/products' }
             ]
-        },
-        {
-            title: 'Categorias',
-            items: [
-                { id: 'electronics', icon: '📱', text: 'Eletrônicos', route: '/home' },
-                { id: 'games', icon: '🎮', text: 'Games', route: '/home' },
-            ]
-        },
-        {
-            title: 'Conta',
-            items: [
-                { id: 'account', icon: '👤', text: 'Minha Conta', route: '/home' },
-                { id: 'logout', icon: '🚪', text: 'Sair', route: '/home' },
-            ]
         }
     ];
 
